@@ -1,6 +1,6 @@
 # Falling Blocks — development
 
-This directory is not a launchable app yet. `model.mjs` is an independent,
+This directory contains an unregistered development prototype. `model.mjs` is an independent,
 deterministic rules model based on the design at
 `../../../../served_apps_public/game_tree/01-phaser-arcade/falling-blocks/`.
 It implements a 10×20 board with four hidden rows, seeded seven-piece bags,
@@ -9,9 +9,13 @@ bounded lock resets and a versioned exact logical snapshot. Its 60 Hz ticks are
 logical; the future presentation must discard elapsed timing debt on suspension.
 The rules do not claim official Tetris rotation or scoring compatibility.
 
-Run `node tests/falling-blocks-model.test.mjs` from SIMPLIFIED. These are model
-tests, not evidence of a playable interface, physical touch, Rive or persistence.
-The model is not registered in the desktop and is not live.
+Run `node tests/falling-blocks-model.test.mjs` from SIMPLIFIED. These are model tests, not evidence of physical touch, Rive or persistence.
+The prototype is not registered in the desktop and is not live. Phaser 4.2.1
+is pinned in this app's own lockfile; its MIT license is included in the bundle.
+An isolated browser harness exercises two instances, save, mutation, load,
+invalid save rejection and independent disposal with a memory-only file-service
+stand-in on desktop and an emulated phone viewport. It does not establish real
+account storage, sync, physical touch, layout quality, or Rive integration.
 
 ## Actual desktop integration points
 
@@ -31,7 +35,7 @@ The model is not registered in the desktop and is not live.
 - The app builder at `active-system/scripts/build-public-apps.py` uses esbuild
   and a lockfile, with explicit assets in each app's `app.json`. App menu,
   catalog and loader registration must be added only for a working vertical
-  slice. No Phaser or Rive version has been qualified or locked for this game.
+  slice. Phaser 4.2.1 is pinned and runs in the isolated harness; Rive has not yet been qualified or locked.
 - `active-system/app.js` controls focus and window sizing. Keyboard handling
   must only capture focused play and must not consume input in another window;
   clear held input on pointer cancellation, blur and backgrounding. Observe
@@ -39,11 +43,20 @@ The model is not registered in the desktop and is not live.
 
 ## Still required before release
 
-A playable Phaser interface; desktop and phone controls; start/pause/retry,
-settings and tutorial; game save/load via My files with collision handling and
-restored gameplay tests; two independent windows and disposal checks; browser
-and physical-phone verification; performance measurement; authored original
+Review and finish the prototype interface, phone controls, settings and tutorial;
+verify game save/load using the real My files service, account sync and conflict
+handling; test two windows within the desktop and on a physical phone; performance measurement; authored original
 `block-coach.riv`, qualified Rive runtime and tested artboard properties and
 triggers; real asset/license provenance; and end-to-end review against the
 handoff's common and game-specific acceptance cases. Never label placeholders
 or these model tests as a finished game.
+
+## Isolated browser harness
+
+With build-time Node, the app builder dependencies and the pinned app
+dependencies installed, build the app, copy `tests/falling-blocks-fixture.html`
+as the build directory's `index.html`, and serve that build directory on
+127.0.0.1:18334. Run `CODI_BLOCKS_MANIFEST=.build/blocks-app/apps.json node
+tests/falling-blocks-browser.test.mjs` from SIMPLIFIED with Chrome debugging
+available at 127.0.0.1:19255. Add `CODI_PHONE=1` for the emulated phone viewport.
+The fixture's in-memory storage must never be used as production storage.
