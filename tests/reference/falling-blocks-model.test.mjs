@@ -20,6 +20,9 @@ const playing=()=>{const s=createGame({seed:123});command(s,'resume');return s;}
  const s=playing();s.active={type:'O',rotation:0,x:3,y:22};for(let i=0;i<MAX_RESETS+8;i++){tick(s);command(s,i%2?'left':'right');}assert.equal(s.resets,MAX_RESETS);for(let i=0;i<LOCK_TICKS;i++)tick(s);assert.ok(s.board.some(r=>r.some(Boolean)));
 }
 {
+ const s=playing();s.active={type:'O',rotation:0,x:3,y:20};s.board[22][4]='T';s.lock=20;s.resets=MAX_RESETS;command(s,'right');tick(s);assert.equal(s.lock,20,'leaving a ledge must not reset exhausted lock delay');while(JSON.stringify(ghost(s))!==JSON.stringify(cells(s.active)))command(s,'soft');for(let i=0;i<10;i++)tick(s);assert.equal(s.lock,0);assert.ok(s.board[22].some(Boolean));
+}
+{
  const s=playing();s.board[3][0]='T';s.active={type:'O',rotation:0,x:3,y:22};command(s,'hard');assert.equal(s.phase,'lost');
  const sprint=playing();sprint.mode='sprint';sprint.lines=36;sprint.board=Array.from({length:HEIGHT},(_,y)=>Array.from({length:WIDTH},(_,x)=>y>=20&&x!==4?'J':null));sprint.active={type:'I',rotation:1,x:3,y:20};command(sprint,'hard');assert.equal(sprint.phase,'won');
 }
