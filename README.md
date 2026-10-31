@@ -15,7 +15,10 @@ is pinned in this app's own lockfile; its MIT license is included in the bundle.
 An isolated browser harness exercises two instances, mode selection, help,
 keyboard movement, an emulated touch tap, save, mutation, load, invalid save
 rejection and independent disposal with a memory-only file-service stand-in at
-desktop, 4K and emulated phone viewport sizes. A separate isolated local-desktop test now exercises the actual account file
+desktop, 4K and emulated phone viewport sizes. The board also follows its
+container when resized, keeping its aspect ratio; a per-window observer is
+released on close. The current prototype has no game audio and does not create
+an audio context. A separate isolated local-desktop test now exercises the actual account file
 service, sync to account disk, recovery in a fresh browser session, isolation
 from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
