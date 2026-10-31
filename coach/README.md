@@ -20,7 +20,7 @@ WASM from its own bundle. Browser tests cover separate windows, game-state
 changes and a line-clear reaction without external requests. The host follows the device motion preference by default, with a window-level
 override. Still required: physical-phone testing, performance and full game
 acceptance testing. A compiling artwork file is not evidence those
-requirements work. The prototype is not registered or shipped on the live desktop.
+requirements work. The coach ships in the live Falling Blocks preview.
 
 Rebuild with the official Rive CLI version 1.8.0, from SIMPLIFIED:
 

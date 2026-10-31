@@ -11,7 +11,7 @@ logical; the future presentation must discard elapsed timing debt on suspension.
 The rules do not claim official Tetris rotation or scoring compatibility.
 
 Run `node tests/falling-blocks-model.test.mjs` from SIMPLIFIED. These are model tests, not evidence of physical touch, Rive or persistence.
-The prototype has passed local menu-based tests; check the handoff for its live deployment status. Phaser 4.2.1
+The prototype is live in Applications → Games → Falling Blocks (preview). Phaser 4.2.1
 is pinned in this app's own lockfile; its MIT license is included in the bundle.
 An isolated browser harness exercises two instances, mode selection, help,
 keyboard movement, an emulated touch tap, save, mutation, load, invalid save
@@ -30,7 +30,7 @@ from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
 saved different games in both, and verified the local and server copies survived
 with a visible conflict notice. Phone-sized and desktop screenshots were inspected; physical touch, broader
-layout quality and live-site behavior remain unverified.
+broader layout quality and physical-device behavior remain unverified.
 
 ## Actual desktop integration points
 
