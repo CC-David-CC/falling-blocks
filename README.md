@@ -3,7 +3,8 @@
 This directory contains an unregistered development prototype. `model.mjs` is an independent,
 deterministic rules model based on the design at
 `../../../../served_apps_public/game_tree/01-phaser-arcade/falling-blocks/`.
-It implements a 10×20 board with four hidden rows, seeded seven-piece bags,
+It implements a 10×20 board with four hidden rows and a partially visible
+spawn, seeded seven-piece bags,
 movement, a project-defined rotation/kick table, ghost, hold, scoring, sprint,
 bounded lock resets, including when a piece leaves a ledge, and a versioned exact logical snapshot. Its 60 Hz ticks are
 logical; the future presentation must discard elapsed timing debt on suspension.
@@ -19,13 +20,15 @@ desktop, 4K and emulated phone viewport sizes. The board also follows its
 container when resized, keeping its aspect ratio; a per-window observer is
 released on close. Minimizing or rolling up its desktop window pauses the game;
 restoring the window requires an explicit Resume. The current prototype has no game audio and does not create
-an audio context. A separate isolated local-desktop test now exercises the actual account file
+an audio context. Save location is collapsed by default, and an optional
+high-contrast setting adds visible outlines; the setting currently lasts only
+for the open window. A separate isolated local-desktop test now exercises the actual account file
 service, sync to account disk, recovery in a fresh browser session, isolation
 from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
 saved different games in both, and verified the local and server copies survived
-with a visible conflict notice. Physical touch, layout quality, Rive and live-site
-behavior remain unverified.
+with a visible conflict notice. Phone-sized and desktop screenshots were inspected; physical touch, broader
+layout quality, Rive and live-site behavior remain unverified.
 
 ## Actual desktop integration points
 

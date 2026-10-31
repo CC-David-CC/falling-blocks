@@ -9,7 +9,7 @@ function refill(s){const bag=[...PIECES];for(let i=bag.length-1;i>0;i--){const j
 function next(s){if(!s.bag.length)refill(s);return s.bag.shift();}
 export function cells(p){let points=SHAPES[p.type].map(([x,y])=>[x,y]);if(p.type!=='O')for(let n=0;n<p.rotation;n++)points=points.map(([x,y])=>[2-y,x]);return points.map(([x,y])=>[x+p.x,y+p.y]);}
 function fits(s,p){return cells(p).every(([x,y])=>x>=0&&x<WIDTH&&y>=0&&y<HEIGHT&&!s.board[y][x]);}
-function spawn(s,type=next(s)){s.active={type,rotation:0,x:3,y:0};s.gravity=0;s.lock=0;s.resets=0;if(!fits(s,s.active))s.phase='lost';}
+function spawn(s,type=next(s)){s.active={type,rotation:0,x:3,y:HIDDEN-1};s.gravity=0;s.lock=0;s.resets=0;if(!fits(s,s.active))s.phase='lost';}
 export function createGame({seed=1,mode='endless'}={}){if(!Number.isInteger(seed)||seed<1||seed>0xffffffff||!['endless','sprint'].includes(mode))throw Error('Invalid game options');const s={board:Array.from({length:HEIGHT},()=>Array(WIDTH).fill(null)),active:null,bag:[],rng:seed>>>0,held:null,holdUsed:false,gravity:0,lock:0,resets:0,score:0,lines:0,mode,phase:'paused'};spawn(s);return s;}
 function move(s,dx,dy){const p={...s.active,x:s.active.x+dx,y:s.active.y+dy};if(!fits(s,p))return false;s.active=p;return true;}
 function grounded(s){return !fits(s,{...s.active,y:s.active.y+1});}
