@@ -7,7 +7,7 @@ import subprocess
 
 ROOT=Path(__file__).resolve().parent
 CLI=os.environ.get('RIVE_CLI','rive')
-EXPECTED='c05d1b66beccc9093839e44ab12d68b9748c128da8a6108a54972b36cd932458'
+EXPECTED='f1719c678e0b78b2c29f063d07872b301ff4cc577f819db3d13860424a6bd707'
 version=subprocess.run([CLI,'--version'],check=True,capture_output=True,text=True).stdout.strip()
 if version!='rive 1.8.0':raise SystemExit('Falling Blocks artwork requires Rive CLI 1.8.0; found '+version)
 subprocess.run([CLI,str(ROOT/'coach'),'--verify'],check=True)

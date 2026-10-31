@@ -35,14 +35,15 @@
         <AnyState x="260" y="-100"/><ExitState x="420" y="-100"/>
         <EntryState><StateTransition stateToId="0:12"/></EntryState>
         <AnimationState x="180" animationId="0:6" id="0:12">
-          <StateTransition stateToId="0:60" duration="150"><TransitionViewModelCondition opValue="greaterThanOrEqual"><TransitionPropertyViewModelComparator><BindablePropertyNumber><DataBindContext sourcePathIds="0:40-0:42" propertyKey="636"/></BindablePropertyNumber></TransitionPropertyViewModelComparator><TransitionValueNumberComparator value="0.7"/></TransitionViewModelCondition></StateTransition>
+          <StateTransition stateToId="0:60" duration="0"><TransitionViewModelCondition opValue="greaterThanOrEqual"><TransitionPropertyViewModelComparator><BindablePropertyNumber><DataBindContext sourcePathIds="0:40-0:42" propertyKey="636"/></BindablePropertyNumber></TransitionPropertyViewModelComparator><TransitionValueNumberComparator value="0.7"/></TransitionViewModelCondition></StateTransition>
         </AnimationState>
         <AnimationState x="370" animationId="0:61" id="0:60">
-          <StateTransition stateToId="0:12" duration="150"><TransitionViewModelCondition opValue="lessThan"><TransitionPropertyViewModelComparator><BindablePropertyNumber><DataBindContext sourcePathIds="0:40-0:42" propertyKey="636"/></BindablePropertyNumber></TransitionPropertyViewModelComparator><TransitionValueNumberComparator value="0.7"/></TransitionViewModelCondition></StateTransition>
+          <StateTransition stateToId="0:12" duration="0"><TransitionViewModelCondition opValue="lessThan"><TransitionPropertyViewModelComparator><BindablePropertyNumber><DataBindContext sourcePathIds="0:40-0:42" propertyKey="636"/></BindablePropertyNumber></TransitionPropertyViewModelComparator><TransitionValueNumberComparator value="0.7"/></TransitionViewModelCondition></StateTransition>
         </AnimationState>
       </StateMachineLayer>
       <StateMachineLayer name="Reactions" id="0:80">
         <AnyState x="280" y="-120">
+          <StateTransition stateToId="0:82"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyBoolean><DataBindContext sourcePathIds="0:40-0:47" propertyKey="634"/></BindablePropertyBoolean></TransitionPropertyViewModelComparator><TransitionValueBooleanComparator value="true"/></TransitionViewModelCondition></StateTransition>
           <StateTransition stateToId="0:83"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyTrigger><DataBindContext sourcePathIds="0:40-0:44" propertyKey="686"/></BindablePropertyTrigger></TransitionPropertyViewModelComparator><TransitionValueTriggerComparator value="1"/></TransitionViewModelCondition></StateTransition>
           <StateTransition stateToId="0:84"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyTrigger><DataBindContext sourcePathIds="0:40-0:45" propertyKey="686"/></BindablePropertyTrigger></TransitionPropertyViewModelComparator><TransitionValueTriggerComparator value="1"/></TransitionViewModelCondition></StateTransition>
         </AnyState>
@@ -52,9 +53,12 @@
         <AnimationState x="460" y="80" animationId="0:87" id="0:84"><StateTransition stateToId="0:82" enableExitTime="true" exitTimeIsPercetange="true" exitTime="100"/></AnimationState>
       </StateMachineLayer>
       <StateMachineLayer name="Game state" id="0:95"><AnyState x="280" y="-120"><StateTransition stateToId="0:100"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:71"/></TransitionViewModelCondition></StateTransition><StateTransition stateToId="0:101"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:72"/></TransitionViewModelCondition></StateTransition><StateTransition stateToId="0:102"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:73"/></TransitionViewModelCondition></StateTransition><StateTransition stateToId="0:103"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:74"/></TransitionViewModelCondition></StateTransition></AnyState><ExitState x="500" y="-120"/><EntryState><StateTransition stateToId="0:100"/></EntryState><AnimationState x="120" y="80" animationId="0:110" id="0:100"/><AnimationState x="250" y="80" animationId="0:111" id="0:101"/><AnimationState x="380" y="80" animationId="0:112" id="0:102"/><AnimationState x="510" y="80" animationId="0:113" id="0:103"/></StateMachineLayer>
+      <StateMachineLayer name="Eye motion" id="0:120"><AnyState x="280" y="-120"/><ExitState x="460" y="-120"/><EntryState><StateTransition stateToId="0:121"/></EntryState><AnimationState x="150" animationId="0:123" id="0:121"><StateTransition stateToId="0:122"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyBoolean><DataBindContext sourcePathIds="0:40-0:47" propertyKey="634"/></BindablePropertyBoolean></TransitionPropertyViewModelComparator><TransitionValueBooleanComparator value="true"/></TransitionViewModelCondition></StateTransition></AnimationState><AnimationState x="350" animationId="0:124" id="0:122"><StateTransition stateToId="0:121"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyBoolean><DataBindContext sourcePathIds="0:40-0:47" propertyKey="634"/></BindablePropertyBoolean></TransitionPropertyViewModelComparator><TransitionValueBooleanComparator value="false"/></TransitionViewModelCondition></StateTransition></AnimationState></StateMachineLayer>
     </StateMachine>
     <LinearAnimation loopValue="loop" duration="180" name="Idle" id="0:6">
       <KeyedObject objectId="0:18"><KeyedProperty property="colorValue"><KeyFrameColor value="FF6ED5C4" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject>
+    </LinearAnimation>
+    <LinearAnimation loopValue="loop" duration="180" name="Blink" id="0:123">
       <KeyedObject objectId="0:14"><KeyedProperty property="scaleY">
         <KeyFrameDouble value="1" frame="0" interpolationType="linear"/><KeyFrameDouble value="1" frame="140" interpolationType="linear"/>
         <KeyFrameDouble value="0.12" frame="146" interpolationType="linear"/><KeyFrameDouble value="1" frame="152" interpolationType="linear"/><KeyFrameDouble value="1" frame="180" interpolationType="linear"/>
@@ -64,6 +68,7 @@
         <KeyFrameDouble value="0.12" frame="146" interpolationType="linear"/><KeyFrameDouble value="1" frame="152" interpolationType="linear"/><KeyFrameDouble value="1" frame="180" interpolationType="linear"/>
       </KeyedProperty></KeyedObject>
     </LinearAnimation>
+    <LinearAnimation duration="1" name="Still eyes" id="0:124"><KeyedObject objectId="0:14"><KeyedProperty property="scaleY"><KeyFrameDouble value="1" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject><KeyedObject objectId="0:15"><KeyedProperty property="scaleY"><KeyFrameDouble value="1" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject></LinearAnimation>
     <LinearAnimation loopValue="loop" duration="60" name="Alert" id="0:61">
       <KeyedObject objectId="0:18"><KeyedProperty property="colorValue"><KeyFrameColor value="FFFFB270" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject>
     </LinearAnimation>
@@ -79,12 +84,14 @@
     <ViewModelPropertyNumber name="danger" id="0:42"/>
     <ViewModelPropertyNumber name="combo" id="0:43"/>
     <ViewModelPropertyEnumCustom enumId="0:70" name="menuState" id="0:46"/>
+    <ViewModelPropertyBoolean name="reducedMotion" id="0:47"/>
     <ViewModelPropertyTrigger name="celebrate" id="0:44"/>
     <ViewModelPropertyTrigger name="topOut" id="0:45"/>
     <ViewModelInstance exports="true" name="Default" id="0:41">
       <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:42"/>
       <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:43"/>
       <ViewModelInstanceEnum propertyValue="0:71" viewModelPropertyId="0:46"/>
+      <ViewModelInstanceBoolean propertyValue="false" viewModelPropertyId="0:47"/>
       <ViewModelInstanceTrigger propertyValue="0" viewModelPropertyId="0:44"/>
       <ViewModelInstanceTrigger propertyValue="0" viewModelPropertyId="0:45"/>
     </ViewModelInstance>

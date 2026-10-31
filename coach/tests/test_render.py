@@ -32,7 +32,14 @@ def main():
         assert changed(neutral,reset,(25,35,155,125))<20
         combo=capture(folder,'combo','--data=combo=3','--advance=1')
         assert changed(neutral,combo,(38,127,145,138))>100
+        still=capture(folder,'still','--data=reducedMotion=true','--advance=146')
+        blink=capture(folder,'blink','--data=reducedMotion=false','--advance=146')
+        assert changed(neutral,still,(50,60,130,95))<20
+        assert changed(neutral,blink,(50,60,130,95))>50
+        interrupted=capture(folder,'interrupted','--advance=1','--data=celebrate=1','--advance=5','--data=reducedMotion=true','--advance=5')
+        assert changed(neutral,interrupted,(45,95,135,130))<20
         for key in ['celebrate','topOut']:
+
             reaction=capture(folder,key,'--advance=1','--data='+key+'=1','--advance=5')
             recovered=capture(folder,key+'-reset','--advance=1','--data='+key+'=1','--advance=90')
             assert changed(neutral,reaction,(45,95,135,130))>25,key

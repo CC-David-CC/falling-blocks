@@ -22,7 +22,9 @@ released on close. Minimizing or rolling up its desktop window pauses the game;
 restoring the window requires an explicit Resume. The current prototype has no game audio and does not create
 an audio context. Save location is collapsed by default, and an optional
 high-contrast setting adds visible outlines; the setting currently lasts only
-for the open window. A separate isolated local-desktop test now exercises the actual account file
+for the open window. Coach motion defaults to the device preference and has a
+per-window override; browser tests cover still eyes, the override and live game
+state while reduced motion is active. A separate isolated local-desktop test now exercises the actual account file
 service, sync to account disk, recovery in a fresh browser session, isolation
 from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
@@ -59,7 +61,7 @@ layout quality and live-site behavior remain unverified.
 ## Still required before release
 
 Review and finish the prototype interface, phone controls, settings and tutorial;
-test real cross-device operation and physical-phone operation; performance measurement; complete reduced-motion handling and physical-device tests for the coach; review distribution of the final assets; and end-to-end review against the
+test real cross-device operation and physical-phone operation; performance measurement; complete physical-device tests for the coach; review distribution of the final assets; and end-to-end review against the
 handoff's common and game-specific acceptance cases. Never label placeholders
 or these model tests as a finished game.
 

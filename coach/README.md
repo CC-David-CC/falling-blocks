@@ -8,15 +8,17 @@ The 180×180 `Main` artboard contains the `Presentation` state machine and a
 looping blink. The `CoachState` view model exposes `danger` (0–1) and `combo`
 (0–4 displayed, values above four clamp) as two meters. Danger also switches
 between idle and alert. `celebrate` and `topOut` trigger brief reactions;
-`menuState` controls a four-color status light. Rive CLI 1.8.0 render tests
+`menuState` controls a four-color status light. `reducedMotion` stops blinking
+and returns an in-progress reaction to neutral; the host suppresses new reactions
+while that preference is active. Rive CLI 1.8.0 render tests
 cover the transitions, return to neutral, meters and all four status colors;
 the blink was inspected at frames 1 and 146. The shape and color choices were created for this project;
 there are no imported illustrations, fonts or audio.
 
 The app binds these properties to its own game model and loads Rive and its
 WASM from its own bundle. Browser tests cover separate windows, game-state
-changes and a line-clear reaction without external requests. Still required:
-reduced-motion behavior, physical-phone testing, performance and full game
+changes and a line-clear reaction without external requests. The host follows the device motion preference by default, with a window-level
+override. Still required: physical-phone testing, performance and full game
 acceptance testing. A compiling artwork file is not evidence those
 requirements work. The prototype is not registered or shipped on the live desktop.
 
