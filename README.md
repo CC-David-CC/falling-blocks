@@ -29,7 +29,7 @@ service, sync to account disk, recovery in a fresh browser session, isolation
 from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
 saved different games in both, and verified the local and server copies survived
-with a visible conflict notice. Phone-sized and desktop screenshots were inspected; physical touch, broader
+with a visible conflict notice. Saves capture the current game and destination when requested; if play continues or a new game starts while a save is waiting, the saved snapshot stays separate and newer progress remains unsaved. Phone-sized and desktop screenshots were inspected; physical touch, broader
 broader layout quality and physical-device behavior remain unverified.
 
 ## Actual desktop integration points
