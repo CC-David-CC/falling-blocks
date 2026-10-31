@@ -12,9 +12,10 @@ The rules do not claim official Tetris rotation or scoring compatibility.
 Run `node tests/falling-blocks-model.test.mjs` from SIMPLIFIED. These are model tests, not evidence of physical touch, Rive or persistence.
 The prototype is not registered in the desktop and is not live. Phaser 4.2.1
 is pinned in this app's own lockfile; its MIT license is included in the bundle.
-An isolated browser harness exercises two instances, save, mutation, load,
-invalid save rejection and independent disposal with a memory-only file-service
-stand-in on desktop and an emulated phone viewport. A separate isolated local-desktop test now exercises the actual account file
+An isolated browser harness exercises two instances, mode selection, help,
+keyboard movement, an emulated touch tap, save, mutation, load, invalid save
+rejection and independent disposal with a memory-only file-service stand-in at
+desktop, 4K and emulated phone viewport sizes. A separate isolated local-desktop test now exercises the actual account file
 service, sync to account disk, recovery in a fresh browser session, isolation
 from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
