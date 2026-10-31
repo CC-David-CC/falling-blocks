@@ -2,7 +2,7 @@
 
 This directory is not a launchable app yet. `model.mjs` is an independent,
 deterministic rules model based on the design at
-`../../../served_apps_public/game_tree/01-phaser-arcade/falling-blocks/`.
+`../../../../served_apps_public/game_tree/01-phaser-arcade/falling-blocks/`.
 It implements a 10×20 board with four hidden rows, seeded seven-piece bags,
 movement, a project-defined rotation/kick table, ghost, hold, scoring, sprint,
 bounded lock resets and a versioned exact logical snapshot. Its 60 Hz ticks are
