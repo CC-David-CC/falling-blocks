@@ -14,8 +14,11 @@ The prototype is not registered in the desktop and is not live. Phaser 4.2.1
 is pinned in this app's own lockfile; its MIT license is included in the bundle.
 An isolated browser harness exercises two instances, save, mutation, load,
 invalid save rejection and independent disposal with a memory-only file-service
-stand-in on desktop and an emulated phone viewport. It does not establish real
-account storage, sync, physical touch, layout quality, or Rive integration.
+stand-in on desktop and an emulated phone viewport. A separate isolated local-desktop test now exercises the actual account file
+service, sync to account disk, recovery in a fresh browser session, isolation
+from another account, unsaved-close cancellation and a same-browser stale-save
+conflict. Physical touch, layout quality, Rive and live-site behavior remain
+unverified.
 
 ## Actual desktop integration points
 
@@ -44,8 +47,7 @@ account storage, sync, physical touch, layout quality, or Rive integration.
 ## Still required before release
 
 Review and finish the prototype interface, phone controls, settings and tutorial;
-verify game save/load using the real My files service, account sync and conflict
-handling; test two windows within the desktop and on a physical phone; performance measurement; authored original
+test cross-device conflicts and physical-phone operation; performance measurement; authored original
 `block-coach.riv`, qualified Rive runtime and tested artboard properties and
 triggers; real asset/license provenance; and end-to-end review against the
 handoff's common and game-specific acceptance cases. Never label placeholders
@@ -60,3 +62,12 @@ as the build directory's `index.html`, and serve that build directory on
 tests/falling-blocks-browser.test.mjs` from SIMPLIFIED with Chrome debugging
 available at 127.0.0.1:19255. Add `CODI_PHONE=1` for the emulated phone viewport.
 The fixture's in-memory storage must never be used as production storage.
+
+## Local desktop account test
+
+Build `calculator files falling-blocks` into an app bundle and start
+`run-simplified-local.py --isolated` with that bundle. Set `CODI_TEST_URL` and
+`CODI_TEST_DATA_ROOT` to the isolated server and its `account-data` directory,
+then run `node tests/falling-blocks-account.test.mjs`. This mounts the prototype
+into a Calculator window with the real app host as a test-only adapter; the
+public menu does not yet include the game. Never point this fixture at live data.
