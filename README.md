@@ -1,6 +1,6 @@
 # Falling Blocks — development
 
-This directory contains an unregistered development prototype. `model.mjs` is an independent,
+This directory contains a development prototype labeled “Falling Blocks (preview)” in the Games menu. `model.mjs` is an independent,
 deterministic rules model based on the design at
 `../../../../served_apps_public/game_tree/01-phaser-arcade/falling-blocks/`.
 It implements a 10×20 board with four hidden rows and a partially visible
@@ -11,7 +11,7 @@ logical; the future presentation must discard elapsed timing debt on suspension.
 The rules do not claim official Tetris rotation or scoring compatibility.
 
 Run `node tests/falling-blocks-model.test.mjs` from SIMPLIFIED. These are model tests, not evidence of physical touch, Rive or persistence.
-The prototype is not registered in the desktop and is not live. Phaser 4.2.1
+The prototype has passed local menu-based tests; check the handoff for its live deployment status. Phaser 4.2.1
 is pinned in this app's own lockfile; its MIT license is included in the bundle.
 An isolated browser harness exercises two instances, mode selection, help,
 keyboard movement, an emulated touch tap, save, mutation, load, invalid save
@@ -48,9 +48,7 @@ layout quality and live-site behavior remain unverified.
   conflict checks. Bind identity and `context.valid()` across async work;
   validate the bounded save fully before replacing the current model.
 - The app builder at `active-system/scripts/build-public-apps.py` uses esbuild
-  and a lockfile, with explicit assets in each app's `app.json`. App menu,
-  catalog and loader registration must be added only for a working vertical
-  slice. Phaser 4.2.1 and Rive Canvas 2.49.0 are pinned. The coach in `coach/` is
+  and a lockfile, with explicit assets in each app's `app.json`. The app is registered as a preview; its full acceptance gates remain open. Phaser 4.2.1 and Rive Canvas 2.49.0 are pinned. The coach in `coach/` is
   generated from reviewed RML and its runtime, WASM and art load from the app
   bundle. Each app window owns its own coach and disposes it on close.
 - `active-system/app.js` controls focus and window sizing. Keyboard handling
@@ -81,6 +79,4 @@ The fixture's in-memory storage must never be used as production storage.
 Build `calculator files falling-blocks` into an app bundle and start
 `run-simplified-local.py --isolated` with that bundle. Set `CODI_TEST_URL` and
 `CODI_TEST_DATA_ROOT` to the isolated server and its `account-data` directory,
-then run `node tests/falling-blocks-account.test.mjs`. This mounts the prototype
-into a Calculator window with the real app host as a test-only adapter; the
-public menu does not yet include the game. Never point this fixture at live data.
+then run `node tests/falling-blocks-account.test.mjs`. The test launches the preview from the Games menu using the real app host. Never point this fixture at live data.
