@@ -17,8 +17,10 @@ invalid save rejection and independent disposal with a memory-only file-service
 stand-in on desktop and an emulated phone viewport. A separate isolated local-desktop test now exercises the actual account file
 service, sync to account disk, recovery in a fresh browser session, isolation
 from another account, unsaved-close cancellation and a same-browser stale-save
-conflict. Physical touch, layout quality, Rive and live-site behavior remain
-unverified.
+conflict. A separate-browser conflict test simulated a gateway outage in one browser,
+saved different games in both, and verified the local and server copies survived
+with a visible conflict notice. Physical touch, layout quality, Rive and live-site
+behavior remain unverified.
 
 ## Actual desktop integration points
 
@@ -47,7 +49,7 @@ unverified.
 ## Still required before release
 
 Review and finish the prototype interface, phone controls, settings and tutorial;
-test cross-device conflicts and physical-phone operation; performance measurement; authored original
+test real cross-device operation and physical-phone operation; performance measurement; authored original
 `block-coach.riv`, qualified Rive runtime and tested artboard properties and
 triggers; real asset/license provenance; and end-to-end review against the
 handoff's common and game-specific acceptance cases. Never label placeholders
