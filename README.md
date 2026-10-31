@@ -5,7 +5,7 @@ deterministic rules model based on the design at
 `../../../../served_apps_public/game_tree/01-phaser-arcade/falling-blocks/`.
 It implements a 10×20 board with four hidden rows, seeded seven-piece bags,
 movement, a project-defined rotation/kick table, ghost, hold, scoring, sprint,
-bounded lock resets and a versioned exact logical snapshot. Its 60 Hz ticks are
+bounded lock resets, including when a piece leaves a ledge, and a versioned exact logical snapshot. Its 60 Hz ticks are
 logical; the future presentation must discard elapsed timing debt on suspension.
 The rules do not claim official Tetris rotation or scoring compatibility.
 
@@ -17,7 +17,8 @@ keyboard movement, an emulated touch tap, save, mutation, load, invalid save
 rejection and independent disposal with a memory-only file-service stand-in at
 desktop, 4K and emulated phone viewport sizes. The board also follows its
 container when resized, keeping its aspect ratio; a per-window observer is
-released on close. The current prototype has no game audio and does not create
+released on close. Minimizing or rolling up its desktop window pauses the game;
+restoring the window requires an explicit Resume. The current prototype has no game audio and does not create
 an audio context. A separate isolated local-desktop test now exercises the actual account file
 service, sync to account disk, recovery in a fresh browser session, isolation
 from another account, unsaved-close cancellation and a same-browser stale-save
