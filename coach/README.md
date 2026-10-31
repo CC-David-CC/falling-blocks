@@ -1,7 +1,7 @@
 # Falling Blocks coach artwork — in progress
 
 This is original artwork authored as Rive Markup Language for Falling Blocks.
-It is not yet part of the game or a completed Rive integration. The source is
+It is integrated into the local development prototype, but the game is not yet a completed integration. The source is
 `scene.rml`; generated `.riv` and preview files are ignored build outputs.
 
 The 180×180 `Main` artboard contains the `Presentation` state machine and a
@@ -13,10 +13,12 @@ cover the transitions, return to neutral, meters and all four status colors;
 the blink was inspected at frames 1 and 146. The shape and color choices were created for this project;
 there are no imported illustrations, fonts or audio.
 
-Still required: actual app-owned data binding, reduced-motion behavior,
-runtime/asset packaging, independent instances and
-browser/phone/lifecycle tests. A compiling artwork file is not evidence those
-requirements work. No runtime asset is shipped yet.
+The app binds these properties to its own game model and loads Rive and its
+WASM from its own bundle. Browser tests cover separate windows, game-state
+changes and a line-clear reaction without external requests. Still required:
+reduced-motion behavior, physical-phone testing, performance and full game
+acceptance testing. A compiling artwork file is not evidence those
+requirements work. The prototype is not registered or shipped on the live desktop.
 
 Rebuild with the official Rive CLI version 1.8.0, from SIMPLIFIED:
 

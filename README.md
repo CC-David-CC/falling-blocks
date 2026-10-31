@@ -28,7 +28,7 @@ from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
 saved different games in both, and verified the local and server copies survived
 with a visible conflict notice. Phone-sized and desktop screenshots were inspected; physical touch, broader
-layout quality, Rive and live-site behavior remain unverified.
+layout quality and live-site behavior remain unverified.
 
 ## Actual desktop integration points
 
@@ -48,7 +48,9 @@ layout quality, Rive and live-site behavior remain unverified.
 - The app builder at `active-system/scripts/build-public-apps.py` uses esbuild
   and a lockfile, with explicit assets in each app's `app.json`. App menu,
   catalog and loader registration must be added only for a working vertical
-  slice. Phaser 4.2.1 is pinned and runs in the isolated harness; Rive has not yet been integrated or its runtime locked. The original coach artwork source is in `coach/`; its blink, data-driven meters, alert, reactions and game-state indicator have been verified in the authoring tool.
+  slice. Phaser 4.2.1 and Rive Canvas 2.49.0 are pinned. The coach in `coach/` is
+  generated from reviewed RML and its runtime, WASM and art load from the app
+  bundle. Each app window owns its own coach and disposes it on close.
 - `active-system/app.js` controls focus and window sizing. Keyboard handling
   must only capture focused play and must not consume input in another window;
   clear held input on pointer cancellation, blur and backgrounding. Observe
@@ -57,15 +59,15 @@ layout quality, Rive and live-site behavior remain unverified.
 ## Still required before release
 
 Review and finish the prototype interface, phone controls, settings and tutorial;
-test real cross-device operation and physical-phone operation; performance measurement; connect the authored coach states and triggers, qualify the Rive runtime and tested artboard properties and
-triggers; real asset/license provenance; and end-to-end review against the
+test real cross-device operation and physical-phone operation; performance measurement; complete reduced-motion handling and physical-device tests for the coach; review distribution of the final assets; and end-to-end review against the
 handoff's common and game-specific acceptance cases. Never label placeholders
 or these model tests as a finished game.
 
 ## Isolated browser harness
 
 With build-time Node, the app builder dependencies and the pinned app
-dependencies installed, build the app, copy `tests/falling-blocks-fixture.html`
+dependencies installed, first run `RIVE_CLI=/path/to/rive python3
+apps/system/falling-blocks/prepare.py` using Rive CLI 1.8.0. Then build the app, copy `tests/falling-blocks-fixture.html`
 as the build directory's `index.html`, and serve that build directory on
 127.0.0.1:18334. Run `CODI_BLOCKS_MANIFEST=.build/blocks-app/apps.json node
 tests/falling-blocks-browser.test.mjs` from SIMPLIFIED with Chrome debugging
