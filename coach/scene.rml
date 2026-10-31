@@ -1,6 +1,7 @@
 <Rive version="1" kind="fragment">
   <Artboard defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:41" styleId="0:5" width="180" height="180" name="Main" id="0:2">
     <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+    <Shape x="90" y="13" name="Game status" id="0:90"><Ellipse originX="0.5" originY="0.5" width="12" height="12" name="Light"/><Fill name="Fill"><SolidColor colorValue="FF94A3B8" name="Status color" id="0:91"/></Fill></Shape>
     <Shape x="68" y="78" name="Left eye" id="0:14">
       <Rectangle originX="0.5" originY="0.5" width="15" height="17" cornerRadiusTL="4" name="Eye"/>
       <Fill name="Fill"><SolidColor colorValue="FF102638" name="Ink"/></Fill>
@@ -27,16 +28,33 @@
     </Shape>
     <Shape x="90" y="94" name="Coach" id="0:17">
       <Rectangle originX="0.5" originY="0.5" width="132" height="132" cornerRadiusTL="24" name="Body"/>
-      <Fill name="Fill"><SolidColor colorValue="FF6ED5C4" name="Teal"/></Fill>
+      <Fill name="Fill"><SolidColor colorValue="FF6ED5C4" name="Teal" id="0:18"/></Fill>
     </Shape>
     <StateMachine name="Presentation" id="0:7">
       <StateMachineLayer name="Idle layer" id="0:8">
         <AnyState x="260" y="-100"/><ExitState x="420" y="-100"/>
         <EntryState><StateTransition stateToId="0:12"/></EntryState>
-        <AnimationState x="180" animationId="0:6" id="0:12"/>
+        <AnimationState x="180" animationId="0:6" id="0:12">
+          <StateTransition stateToId="0:60" duration="150"><TransitionViewModelCondition opValue="greaterThanOrEqual"><TransitionPropertyViewModelComparator><BindablePropertyNumber><DataBindContext sourcePathIds="0:40-0:42" propertyKey="636"/></BindablePropertyNumber></TransitionPropertyViewModelComparator><TransitionValueNumberComparator value="0.7"/></TransitionViewModelCondition></StateTransition>
+        </AnimationState>
+        <AnimationState x="370" animationId="0:61" id="0:60">
+          <StateTransition stateToId="0:12" duration="150"><TransitionViewModelCondition opValue="lessThan"><TransitionPropertyViewModelComparator><BindablePropertyNumber><DataBindContext sourcePathIds="0:40-0:42" propertyKey="636"/></BindablePropertyNumber></TransitionPropertyViewModelComparator><TransitionValueNumberComparator value="0.7"/></TransitionViewModelCondition></StateTransition>
+        </AnimationState>
       </StateMachineLayer>
+      <StateMachineLayer name="Reactions" id="0:80">
+        <AnyState x="280" y="-120">
+          <StateTransition stateToId="0:83"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyTrigger><DataBindContext sourcePathIds="0:40-0:44" propertyKey="686"/></BindablePropertyTrigger></TransitionPropertyViewModelComparator><TransitionValueTriggerComparator value="1"/></TransitionViewModelCondition></StateTransition>
+          <StateTransition stateToId="0:84"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyTrigger><DataBindContext sourcePathIds="0:40-0:45" propertyKey="686"/></BindablePropertyTrigger></TransitionPropertyViewModelComparator><TransitionValueTriggerComparator value="1"/></TransitionViewModelCondition></StateTransition>
+        </AnyState>
+        <ExitState x="500" y="-120"/><EntryState><StateTransition stateToId="0:82"/></EntryState>
+        <AnimationState x="100" animationId="0:85" id="0:82"/>
+        <AnimationState x="280" y="80" animationId="0:86" id="0:83"><StateTransition stateToId="0:82" enableExitTime="true" exitTimeIsPercetange="true" exitTime="100"/></AnimationState>
+        <AnimationState x="460" y="80" animationId="0:87" id="0:84"><StateTransition stateToId="0:82" enableExitTime="true" exitTimeIsPercetange="true" exitTime="100"/></AnimationState>
+      </StateMachineLayer>
+      <StateMachineLayer name="Game state" id="0:95"><AnyState x="280" y="-120"><StateTransition stateToId="0:100"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:71"/></TransitionViewModelCondition></StateTransition><StateTransition stateToId="0:101"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:72"/></TransitionViewModelCondition></StateTransition><StateTransition stateToId="0:102"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:73"/></TransitionViewModelCondition></StateTransition><StateTransition stateToId="0:103"><TransitionViewModelCondition><TransitionPropertyViewModelComparator><BindablePropertyEnum><DataBindContext sourcePathIds="0:40-0:46" propertyKey="637"/></BindablePropertyEnum></TransitionPropertyViewModelComparator><TransitionValueEnumComparator value="0:74"/></TransitionViewModelCondition></StateTransition></AnyState><ExitState x="500" y="-120"/><EntryState><StateTransition stateToId="0:100"/></EntryState><AnimationState x="120" y="80" animationId="0:110" id="0:100"/><AnimationState x="250" y="80" animationId="0:111" id="0:101"/><AnimationState x="380" y="80" animationId="0:112" id="0:102"/><AnimationState x="510" y="80" animationId="0:113" id="0:103"/></StateMachineLayer>
     </StateMachine>
     <LinearAnimation loopValue="loop" duration="180" name="Idle" id="0:6">
+      <KeyedObject objectId="0:18"><KeyedProperty property="colorValue"><KeyFrameColor value="FF6ED5C4" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject>
       <KeyedObject objectId="0:14"><KeyedProperty property="scaleY">
         <KeyFrameDouble value="1" frame="0" interpolationType="linear"/><KeyFrameDouble value="1" frame="140" interpolationType="linear"/>
         <KeyFrameDouble value="0.12" frame="146" interpolationType="linear"/><KeyFrameDouble value="1" frame="152" interpolationType="linear"/><KeyFrameDouble value="1" frame="180" interpolationType="linear"/>
@@ -46,15 +64,29 @@
         <KeyFrameDouble value="0.12" frame="146" interpolationType="linear"/><KeyFrameDouble value="1" frame="152" interpolationType="linear"/><KeyFrameDouble value="1" frame="180" interpolationType="linear"/>
       </KeyedProperty></KeyedObject>
     </LinearAnimation>
+    <LinearAnimation loopValue="loop" duration="60" name="Alert" id="0:61">
+      <KeyedObject objectId="0:18"><KeyedProperty property="colorValue"><KeyFrameColor value="FFFFB270" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject>
+    </LinearAnimation>
+    <LinearAnimation duration="1" name="Neutral" id="0:85"><KeyedObject objectId="0:16"><KeyedProperty property="scaleX"><KeyFrameDouble value="1" frame="0" interpolationType="hold"/></KeyedProperty><KeyedProperty property="rotation"><KeyFrameDouble value="0" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject></LinearAnimation>
+    <LinearAnimation duration="45" name="Celebrate" id="0:86"><KeyedObject objectId="0:16"><KeyedProperty property="scaleX"><KeyFrameDouble value="1.6" frame="0" interpolationType="linear"/><KeyFrameDouble value="1" frame="45" interpolationType="linear"/></KeyedProperty></KeyedObject></LinearAnimation>
+    <LinearAnimation duration="45" name="Top out" id="0:87"><KeyedObject objectId="0:16"><KeyedProperty property="rotation"><KeyFrameDouble value="0.35" frame="0" interpolationType="linear"/><KeyFrameDouble value="0" frame="45" interpolationType="linear"/></KeyedProperty></KeyedObject></LinearAnimation>
+    <LinearAnimation duration="1" name="Title light" id="0:110"><KeyedObject objectId="0:91"><KeyedProperty property="colorValue"><KeyFrameColor value="FF94A3B8" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject></LinearAnimation><LinearAnimation duration="1" name="Playing light" id="0:111"><KeyedObject objectId="0:91"><KeyedProperty property="colorValue"><KeyFrameColor value="FF4DDC98" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject></LinearAnimation><LinearAnimation duration="1" name="Paused light" id="0:112"><KeyedObject objectId="0:91"><KeyedProperty property="colorValue"><KeyFrameColor value="FFFFD166" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject></LinearAnimation><LinearAnimation duration="1" name="Result light" id="0:113"><KeyedObject objectId="0:91"><KeyedProperty property="colorValue"><KeyFrameColor value="FFDA9AFF" frame="0" interpolationType="hold"/></KeyedProperty></KeyedObject></LinearAnimation>
   </Artboard>
   <DataConverterRangeMapper minInput="0" maxInput="1" minOutput="0" maxOutput="100" clampLower="true" clampUpper="true" name="Danger width" id="0:50"/>
   <DataConverterRangeMapper minInput="0" maxInput="4" minOutput="0" maxOutput="100" clampLower="true" clampUpper="true" name="Combo width" id="0:51"/>
+  <DataEnumCustom name="MenuState" id="0:70"><DataEnumValue key="title" value="Title" id="0:71"/><DataEnumValue key="playing" value="Playing" id="0:72"/><DataEnumValue key="paused" value="Paused" id="0:73"/><DataEnumValue key="result" value="Result" id="0:74"/></DataEnumCustom>
   <ViewModel defaultInstanceId="0:41" name="CoachState" id="0:40">
     <ViewModelPropertyNumber name="danger" id="0:42"/>
     <ViewModelPropertyNumber name="combo" id="0:43"/>
+    <ViewModelPropertyEnumCustom enumId="0:70" name="menuState" id="0:46"/>
+    <ViewModelPropertyTrigger name="celebrate" id="0:44"/>
+    <ViewModelPropertyTrigger name="topOut" id="0:45"/>
     <ViewModelInstance exports="true" name="Default" id="0:41">
       <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:42"/>
       <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:43"/>
+      <ViewModelInstanceEnum propertyValue="0:71" viewModelPropertyId="0:46"/>
+      <ViewModelInstanceTrigger propertyValue="0" viewModelPropertyId="0:44"/>
+      <ViewModelInstanceTrigger propertyValue="0" viewModelPropertyId="0:45"/>
     </ViewModelInstance>
   </ViewModel>
 </Rive>
