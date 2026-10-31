@@ -1,0 +1,60 @@
+<Rive version="1" kind="fragment">
+  <Artboard defaultStateMachineId="0:7" viewModelId="0:40" viewModelInstanceId="0:41" styleId="0:5" width="180" height="180" name="Main" id="0:2">
+    <LayoutComponentStyle name="Artboard Style" id="0:5"/>
+    <Shape x="68" y="78" name="Left eye" id="0:14">
+      <Rectangle originX="0.5" originY="0.5" width="15" height="17" cornerRadiusTL="4" name="Eye"/>
+      <Fill name="Fill"><SolidColor colorValue="FF102638" name="Ink"/></Fill>
+    </Shape>
+    <Shape x="112" y="78" name="Right eye" id="0:15">
+      <Rectangle originX="0.5" originY="0.5" width="15" height="17" cornerRadiusTL="4" name="Eye"/>
+      <Fill name="Fill"><SolidColor colorValue="FF102638" name="Ink"/></Fill>
+    </Shape>
+    <Shape x="90" y="116" name="Indicator" id="0:16">
+      <Rectangle originX="0.5" originY="0.5" width="38" height="7" cornerRadiusTL="3" name="Bar"/>
+      <Fill name="Fill"><SolidColor colorValue="FF102638" name="Ink"/></Fill>
+    </Shape>
+    <Shape x="40" y="142" name="Danger meter" id="0:30">
+      <Rectangle originX="0" originY="0.5" width="0" height="5" cornerRadiusTL="2" name="Meter">
+        <DataBindContext sourcePathIds="0:40-0:42" propertyKey="20" converterId="0:50"/>
+      </Rectangle>
+      <Fill name="Fill"><SolidColor colorValue="FFFF6B6B" name="Coral"/></Fill>
+    </Shape>
+    <Shape x="40" y="132" name="Combo meter" id="0:31">
+      <Rectangle originX="0" originY="0.5" width="0" height="5" cornerRadiusTL="2" name="Meter">
+        <DataBindContext sourcePathIds="0:40-0:43" propertyKey="20" converterId="0:51"/>
+      </Rectangle>
+      <Fill name="Fill"><SolidColor colorValue="FFFFEA87" name="Gold"/></Fill>
+    </Shape>
+    <Shape x="90" y="94" name="Coach" id="0:17">
+      <Rectangle originX="0.5" originY="0.5" width="132" height="132" cornerRadiusTL="24" name="Body"/>
+      <Fill name="Fill"><SolidColor colorValue="FF6ED5C4" name="Teal"/></Fill>
+    </Shape>
+    <StateMachine name="Presentation" id="0:7">
+      <StateMachineLayer name="Idle layer" id="0:8">
+        <AnyState x="260" y="-100"/><ExitState x="420" y="-100"/>
+        <EntryState><StateTransition stateToId="0:12"/></EntryState>
+        <AnimationState x="180" animationId="0:6" id="0:12"/>
+      </StateMachineLayer>
+    </StateMachine>
+    <LinearAnimation loopValue="loop" duration="180" name="Idle" id="0:6">
+      <KeyedObject objectId="0:14"><KeyedProperty property="scaleY">
+        <KeyFrameDouble value="1" frame="0" interpolationType="linear"/><KeyFrameDouble value="1" frame="140" interpolationType="linear"/>
+        <KeyFrameDouble value="0.12" frame="146" interpolationType="linear"/><KeyFrameDouble value="1" frame="152" interpolationType="linear"/><KeyFrameDouble value="1" frame="180" interpolationType="linear"/>
+      </KeyedProperty></KeyedObject>
+      <KeyedObject objectId="0:15"><KeyedProperty property="scaleY">
+        <KeyFrameDouble value="1" frame="0" interpolationType="linear"/><KeyFrameDouble value="1" frame="140" interpolationType="linear"/>
+        <KeyFrameDouble value="0.12" frame="146" interpolationType="linear"/><KeyFrameDouble value="1" frame="152" interpolationType="linear"/><KeyFrameDouble value="1" frame="180" interpolationType="linear"/>
+      </KeyedProperty></KeyedObject>
+    </LinearAnimation>
+  </Artboard>
+  <DataConverterRangeMapper minInput="0" maxInput="1" minOutput="0" maxOutput="100" clampLower="true" clampUpper="true" name="Danger width" id="0:50"/>
+  <DataConverterRangeMapper minInput="0" maxInput="4" minOutput="0" maxOutput="100" clampLower="true" clampUpper="true" name="Combo width" id="0:51"/>
+  <ViewModel defaultInstanceId="0:41" name="CoachState" id="0:40">
+    <ViewModelPropertyNumber name="danger" id="0:42"/>
+    <ViewModelPropertyNumber name="combo" id="0:43"/>
+    <ViewModelInstance exports="true" name="Default" id="0:41">
+      <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:42"/>
+      <ViewModelInstanceNumber propertyValue="0" viewModelPropertyId="0:43"/>
+    </ViewModelInstance>
+  </ViewModel>
+</Rive>
