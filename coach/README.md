@@ -25,11 +25,11 @@ requirements work. The coach ships in the live Falling Blocks preview.
 Rebuild with the official Rive CLI version 1.8.0, from SIMPLIFIED:
 
 ```
-rive apps/system/falling-blocks/coach --verify
-rive inspect apps/system/falling-blocks/coach --summary
-rive apps/system/falling-blocks/coach --once
-rive apps/system/falling-blocks/coach --screenshot --data=danger=1 --data=combo=3 --advance=1
-RIVE_CLI=/path/to/rive python3 apps/system/falling-blocks/coach/tests/test_render.py
+rive apps/games/01-phaser-arcade/falling-blocks/coach --verify
+rive inspect apps/games/01-phaser-arcade/falling-blocks/coach --summary
+rive apps/games/01-phaser-arcade/falling-blocks/coach --once
+rive apps/games/01-phaser-arcade/falling-blocks/coach --screenshot --data=danger=1 --data=combo=3 --advance=1
+RIVE_CLI=/path/to/rive python3 apps/games/01-phaser-arcade/falling-blocks/coach/tests/test_render.py
 ```
 
 The CLI was obtained from `https://releases.rive.app/cli/v1.8.0/rive-linux-x64.tar.gz`;

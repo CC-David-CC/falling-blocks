@@ -2,7 +2,7 @@
 
 This directory contains a development prototype labeled “Falling Blocks (preview)” in the Games menu. `model.mjs` is an independent,
 deterministic rules model based on the design at
-`../../UNFINISHED-TO INTEGRATE-PARTIAL/game_tree/01-phaser-arcade/falling-blocks/`.
+`../../../UNFINISHED-TO INTEGRATE-PARTIAL/game_tree/01-phaser-arcade/falling-blocks (port into desktop already started)/`.
 It implements a 10×20 board with four hidden rows and a partially visible
 spawn, seeded seven-piece bags,
 movement, a project-defined rotation/kick table, ghost, hold, scoring, a
@@ -74,7 +74,7 @@ or these model tests as a finished game.
 
 With build-time Node, the app builder dependencies and the pinned app
 dependencies installed, first run `RIVE_CLI=/path/to/rive python3
-apps/system/falling-blocks/prepare.py` using Rive CLI 1.8.0. Then build the app, copy `tests/falling-blocks-fixture.html`
+apps/games/01-phaser-arcade/falling-blocks/prepare.py` using Rive CLI 1.8.0. Then build the app, copy `tests/falling-blocks-fixture.html`
 as the build directory's `index.html`, and serve that build directory on
 127.0.0.1:18334. Run `CODI_BLOCKS_MANIFEST=.build/blocks-app/apps.json node
 tests/falling-blocks-browser.test.mjs` from SIMPLIFIED with Chrome debugging
