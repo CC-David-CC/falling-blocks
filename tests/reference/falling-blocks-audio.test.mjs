@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createGameAudio} from '../apps/system/falling-blocks/audio.mjs';
+import {createGameAudio} from '../apps/games/01-phaser-arcade/falling-blocks/audio.mjs';
 
 class Param{
  value=1;

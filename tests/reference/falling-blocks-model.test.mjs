@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {createGame,command,tick,cells,ghost,nextPieces,snapshot,restore,WIDTH,HEIGHT,LOCK_TICKS,MAX_RESETS} from '../apps/system/falling-blocks/model.mjs';
+import {createGame,command,tick,cells,ghost,nextPieces,snapshot,restore,WIDTH,HEIGHT,LOCK_TICKS,MAX_RESETS} from '../apps/games/01-phaser-arcade/falling-blocks/model.mjs';
 const playing=()=>{const s=createGame({seed:123});command(s,'resume');return s;};
 {
  const a=createGame({seed:42}),b=createGame({seed:42});assert.deepEqual(a,b);assert.ok(cells(a.active).some(([,y])=>y>=4),'new piece must be visible');for(let seed=1;seed<100;seed++)assert.ok(cells(createGame({seed}).active).some(([,y])=>y>=4),'spawn must be visible for every piece');assert.equal(new Set([a.active.type,...a.bag]).size,7);const before=structuredClone(a);assert.deepEqual(nextPieces(a),a.bag.slice(0,3));assert.deepEqual(a,before);a.bag=[];const empty=structuredClone(a);assert.equal(nextPieces(a).length,3);assert.deepEqual(a,empty);
