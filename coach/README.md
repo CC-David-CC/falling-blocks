@@ -2,7 +2,7 @@
 
 This is original artwork authored as Rive Markup Language for Falling Blocks.
 It is integrated into the local development prototype, but the game is not yet a completed integration. The source is
-`scene.rml`; generated `.riv` and preview files are ignored build outputs.
+`scene.rml`. The reviewed runtime `build/coach.riv` is tracked so a fresh checkout can serve the coach; other build and preview files remain ignored. Rebuild it with the pinned CLI and verify its SHA-256 using `../prepare.py` before updating the asset.
 
 The 180×180 `Main` artboard contains the `Presentation` state machine and a
 looping blink. The `CoachState` view model exposes `danger` (0–1) and `combo`

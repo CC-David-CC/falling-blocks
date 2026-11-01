@@ -22,7 +22,7 @@ keyboard movement, an emulated touch tap, save, mutation, load, invalid save
 rejection and independent disposal with a memory-only file-service stand-in at
 desktop, 4K and emulated phone viewport sizes. The board also follows its
 container when resized, keeping its aspect ratio; a per-window observer is
-released on close. Minimizing or rolling up its desktop window pauses the game;
+released on close. Switching focus to another desktop window, minimizing or rolling up its window pauses the game;
 restoring the window requires an explicit Resume. Sound effects are off by
 default. Enabling them creates only this window's AudioContext on a user
 gesture; move, rotate, drop, line-clear and result cues are synthesized
