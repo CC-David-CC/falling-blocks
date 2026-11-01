@@ -2,15 +2,19 @@
 
 This directory contains a development prototype labeled “Falling Blocks (preview)” in the Games menu. `model.mjs` is an independent,
 deterministic rules model based on the design at
-`../../UNFINISHED-TO INTEGRATE-PARTIAL/game_tree/01-phaser-arcade/falling-blocks (port into desktop already started)/`.
+`../../UNFINISHED-TO INTEGRATE-PARTIAL/game_tree/01-phaser-arcade/falling-blocks/`.
 It implements a 10×20 board with four hidden rows and a partially visible
 spawn, seeded seven-piece bags,
-movement, a project-defined rotation/kick table, ghost, hold, scoring, sprint,
+movement, a project-defined rotation/kick table, ghost, hold, scoring, a
+two-line tutorial, 40-line sprint and endless mode,
 bounded lock resets, including when a piece leaves a ledge, and a versioned exact logical snapshot. Its 60 Hz ticks are
 logical; the future presentation must discard elapsed timing debt on suspension.
 The rules do not claim official Tetris rotation or scoring compatibility.
 
-Run `node tests/falling-blocks-model.test.mjs` from SIMPLIFIED. These are model tests, not evidence of physical touch, Rive or persistence.
+Run `node tests/falling-blocks-model.test.mjs` and
+`node tests/falling-blocks-audio.test.mjs` from SIMPLIFIED. These are model and
+audio-boundary tests, not evidence of physical touch, final Rive polish or
+persistence.
 The prototype is live in Applications → Games → Falling Blocks (preview). Phaser 4.2.1
 is pinned in this app's own lockfile; its MIT license is included in the bundle.
 An isolated browser harness exercises two instances, mode selection, help,
@@ -19,8 +23,11 @@ rejection and independent disposal with a memory-only file-service stand-in at
 desktop, 4K and emulated phone viewport sizes. The board also follows its
 container when resized, keeping its aspect ratio; a per-window observer is
 released on close. Minimizing or rolling up its desktop window pauses the game;
-restoring the window requires an explicit Resume. The current prototype has no game audio and does not create
-an audio context. Save location is collapsed by default, and an optional
+restoring the window requires an explicit Resume. Sound effects are off by
+default. Enabling them creates only this window's AudioContext on a user
+gesture; move, rotate, drop, line-clear and result cues are synthesized
+locally. Audio pauses with the game and is closed on disposal. Volume and mute
+choices are retained per account in local browser preferences. Save location is collapsed by default, and an optional
 high-contrast setting adds visible outlines; the setting currently lasts only
 for the open window. Coach motion defaults to the device preference and has a
 per-window override; browser tests cover still eyes, the override and live game
@@ -30,7 +37,7 @@ from another account, unsaved-close cancellation and a same-browser stale-save
 conflict. A separate-browser conflict test simulated a gateway outage in one browser,
 saved different games in both, and verified the local and server copies survived
 with a visible conflict notice. Saves capture the current game and destination when requested; if play continues or a new game starts while a save is waiting, the saved snapshot stays separate and newer progress remains unsaved. Phone-sized and desktop screenshots were inspected; physical touch, broader
-broader layout quality and physical-device behavior remain unverified.
+layout quality and physical-device behavior remain unverified.
 
 ## Actual desktop integration points
 
