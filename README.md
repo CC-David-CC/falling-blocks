@@ -82,3 +82,8 @@ Build `calculator files falling-blocks` into an app bundle and start
 then run `node tests/falling-blocks-account.test.mjs`. The test launches the preview from the Games menu using the real app host. Never point this fixture at live data.
 
 Saved Falling Blocks `.game.json` files can be opened from Files as well as from the game. The desktop checks the bounded file’s game identity before routing it; an unrecognized game save opens as text. The game restores paused and validates the snapshot before replacing play. Local desktop, emulated-phone and 4K and live emulated-phone account tests cover Files routing, exact paused-state recovery, unknown-game fallback, sync and fresh-session reopen.
+
+Opening a save pauses play. When starting a new game or opening a save would
+discard progress, a desktop dialog asks first; cancelling leaves the game
+paused. Replacement saves also use a desktop dialog and protect a file that
+changes during confirmation.
