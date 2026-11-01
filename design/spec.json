@@ -1,0 +1,123 @@
+{
+  "category": "01-phaser-arcade",
+  "id": "falling-blocks",
+  "title": "Falling Blocks",
+  "genre": "Tetris-type falling-block puzzle",
+  "pitch": "A crisp single-player line-clearing game with its own visual identity, readable ghost placement and a satisfying short sprint.",
+  "capabilities": [
+    "Discrete board logic independent of frame rate",
+    "Phaser scenes, batched sprites and particles",
+    "Rive coach and animated results"
+  ],
+  "rules": [
+    "A 10×20 visible board plus four hidden spawn rows; seeded seven-piece bag; explicit rotation/kick table authored and tested in this project.",
+    "Move, rotate, soft-drop and hard-drop. Hold is allowed once per lock. Lock delay is bounded and cannot be extended indefinitely.",
+    "Sprint ends at 40 cleared lines; Endless ends on blocked spawn. Clearing, scoring and next spawn are one ordered state transition."
+  ],
+  "content": "One tutorial, a 40-line sprint and an endless mode. One original theme; two contrast presets. No online leaderboard.",
+  "state": [
+    "board cells",
+    "active piece and orientation",
+    "bag, next queue and RNG state",
+    "held piece and hold-used flag",
+    "gravity/lock tick counters",
+    "score, lines and selected mode"
+  ],
+  "actions": [
+    {
+      "command": "shift",
+      "desktop": "Left/right arrows with bounded repeat",
+      "phone": "Large left/right repeat buttons",
+      "xr": "Not applicable; plays as a flat browser app."
+    },
+    {
+      "command": "rotate",
+      "desktop": "Up / Z",
+      "phone": "Two rotate buttons",
+      "xr": "Not applicable; plays as a flat browser app."
+    },
+    {
+      "command": "drop",
+      "desktop": "Down / Space",
+      "phone": "Soft-drop button / distinct hard-drop button",
+      "xr": "Not applicable; plays as a flat browser app."
+    },
+    {
+      "command": "hold",
+      "desktop": "C",
+      "phone": "Hold button",
+      "xr": "Not applicable; plays as a flat browser app."
+    }
+  ],
+  "rive": {
+    "asset": "block-coach.riv",
+    "role": "Small coach beside board; menu and score reactions, never obstructing falling pieces.",
+    "properties": {
+      "danger": "number 0..1",
+      "combo": "integer >=0",
+      "menuState": "enum title/playing/paused/result"
+    },
+    "events": [
+      "celebrate",
+      "topOut"
+    ],
+    "states": [
+      "idle",
+      "alert",
+      "celebrate",
+      "disappointed"
+    ],
+    "artboard": "Main",
+    "stateMachine": "Presentation",
+    "assetStatus": "to_author"
+  },
+  "polish": [
+    "Clear line anticipation without delaying input",
+    "Reduced-motion mode removes board shake",
+    "Visible next queue and ghost; muted-by-default audio until Play"
+  ],
+  "tests": [
+    "Four lines clear exactly once and score once.",
+    "Repeated wall rotation never places a piece outside the grid.",
+    "Hard-drop plus held touch cannot spawn a second drop.",
+    "Save mid-lock restores counters and bag, not only the settled grid.",
+    "Top-out and hidden-row behavior are covered.",
+    "Touch release outside canvas stops repeat."
+  ],
+  "loop": [
+    "consume ordered shift/rotation/drop commands",
+    "apply authored kicks against board occupancy",
+    "advance gravity and bounded lock timer",
+    "atomically lock, clear, score, then spawn",
+    "derive ghost cells and Rive presentation from state"
+  ],
+  "save": "Exact logical snapshot at a tick boundary; no engine object serialization.",
+  "wave": 1,
+  "scope": "No copyrighted logos, copied skins, music or branded packaging. Tetris-type describes mechanics, not affiliation.",
+  "specVersion": 1,
+  "status": "planned",
+  "implementation": "not_started",
+  "runtimeTests": "not_run",
+  "engine": "Phaser",
+  "singlePlayer": true,
+  "phoneRequired": true,
+  "mountContract": {
+    "export": "mount",
+    "synchronous": true,
+    "returns": [
+      "element",
+      "dispose"
+    ],
+    "productionEntry": "index.mjs",
+    "suppliedEntry": "index.pseudo.mjs"
+  },
+  "xrRequired": false,
+  "riveRequired": true,
+  "riveAssetIncluded": false,
+  "documentKind": "Exact logical snapshot at a tick boundary; no engine object serialization.",
+  "sources": [
+    "S01",
+    "S02",
+    "S03"
+  ]
+}

@@ -2,7 +2,7 @@
 
 This directory contains a development prototype labeled “Falling Blocks (preview)” in the Games menu. `model.mjs` is an independent,
 deterministic rules model based on the design at
-`../../../../served_apps_public/game_tree/01-phaser-arcade/falling-blocks/`.
+`../../UNFINISHED-TO INTEGRATE-PARTIAL/game_tree/01-phaser-arcade/falling-blocks (port into desktop already started)/`.
 It implements a 10×20 board with four hidden rows and a partially visible
 spawn, seeded seven-piece bags,
 movement, a project-defined rotation/kick table, ghost, hold, scoring, sprint,
