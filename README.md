@@ -94,3 +94,7 @@ Opening a save pauses play. When starting a new game or opening a save would
 discard progress, a desktop dialog asks first; cancelling leaves the game
 paused. Replacement saves also use a desktop dialog and protect a file that
 changes during confirmation.
+
+The `tests/falling-blocks-input-review.test.mjs` isolated account test checks
+overlapping emulated phone touches, saving the resulting position, and recovery
+from an invalid file opened from My files. Physical multitouch remains untested.
