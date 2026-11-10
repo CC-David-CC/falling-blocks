@@ -2,7 +2,7 @@
 
 This directory contains a development prototype labeled “Falling Blocks (preview)” in the Games menu. `model.mjs` is an independent,
 deterministic rules model based on the design at
-`../../../UNFINISHED-TO INTEGRATE-PARTIAL/game_tree/01-phaser-arcade/falling-blocks (port into desktop already started)/`.
+[the original design brief](design/README.md).
 It implements a 10×20 board with four hidden rows and a partially visible
 spawn, seeded seven-piece bags,
 movement, a project-defined rotation/kick table, ghost, hold, scoring, a
@@ -98,3 +98,7 @@ changes during confirmation.
 The `tests/falling-blocks-input-review.test.mjs` isolated account test checks
 overlapping emulated phone touches, saving the resulting position, and recovery
 from an invalid file opened from My files. Physical multitouch remains untested.
+
+## Design requirements
+
+The original [design brief, controls, save rules, artwork and acceptance plans](design/README.md) are retained as reference. They describe targets; the implementation and qualification status above takes precedence.

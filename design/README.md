@@ -1,3 +1,5 @@
+> Original design reference from 2026-10-30. This describes intended behavior, not current implementation or qualification. The current app README is authoritative for status. Pseudocode and template JSON here are documentation, not build entries.
+
 # Falling Blocks
 
 **Tetris-type falling-block puzzle · Phaser · single-player · phone required · flat-screen app**
@@ -42,6 +44,6 @@ Exact logical snapshot at a tick boundary; no engine object serialization. See [
 
 Implement the rule loop in [gameplay.pseudo.txt](gameplay.pseudo.txt); bind the exact app lifecycle from [index.pseudo.mjs](index.pseudo.mjs); complete [CONTROLS.md](CONTROLS.md); author/integrate [RIVE.md](RIVE.md); then satisfy [ACCEPTANCE.md](ACCEPTANCE.md). Do not add XR or a 3D engine solely to widen the technology list.
 
-Target wave: **1**. Integrator first reads [AGENTS.md](../../AGENTS.md); do not guess host APIs from symbolic helper names.
+Target wave: **1**. Integrator first reads [AGENTS.md](../../../../../docs/games/design-reference/ORIGINAL-INSTRUCTIONS.md); do not guess host APIs from symbolic helper names.
 
 No copyrighted logos, copied skins, music or branded packaging. Tetris-type describes mechanics, not affiliation.
