@@ -6,5 +6,8 @@
   "dependencies": {
     "@rive-app/canvas": "2.49.0",
     "phaser": "4.2.1"
+  },
+  "scripts": {
+    "test:reference": "node --test --test-reporter=tap tests/reference/*.test.mjs"
   }
 }
