@@ -1,1 +1,205 @@
-.blocks-app{display:flex;flex-direction:column;gap:6px;padding:8px;background:#eaf0f7;color:#142137;overflow:auto}.blocks-toolbar,.blocks-controls{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.blocks-save-fields{display:flex;gap:6px;align-items:center}.blocks-save-fields input{min-width:140px;flex:1}.blocks-save-fields button{min-height:40px}.blocks-save-location summary{cursor:pointer;min-height:32px}.blocks-toolbar button,.blocks-controls button,.blocks-toolbar select{min-height:40px}.blocks-play-area{display:flex;flex:1 1 270px;min-height:200px;position:relative}.blocks-coach{position:absolute;right:0;top:0;width:72px;z-index:1;pointer-events:none}.blocks-coach canvas{width:100%;height:auto}.blocks-coach-notice{font-size:11px}.blocks-stage{flex:1 1 270px;min-height:200px;position:relative;outline-offset:2px}.blocks-stage canvas{max-width:100%;max-height:100%;touch-action:none}.blocks-info{font-size:14px}.blocks-mode-label{display:flex;align-items:center;gap:6px}.blocks-help summary,.blocks-settings summary{cursor:pointer;min-height:32px}.blocks-settings select{min-height:40px}.blocks-settings label{display:inline-flex;align-items:center;gap:6px;margin:0 12px 6px 0}.blocks-help p{margin:4px 0;max-width:70ch}.blocks-controls button{flex:1 1 72px;touch-action:none}.blocks-app .app-status{font-size:13px}.blocks-stage:focus-visible{outline:3px solid #426dda}.blocks-audio-control input[type=range]{width:140px}.blocks-audio-notice{color:#8a3f1f;font-size:12px}.blocks-settings input[type=checkbox]{width:20px;height:20px}@media(max-width:600px){.blocks-app{padding:5px;gap:4px}.blocks-toolbar button,.blocks-controls button,.blocks-toolbar select{min-height:44px}.blocks-stage{min-height:200px}.blocks-save-fields button{min-height:44px}.blocks-audio-control input[type=range]{width:120px}}
+.blocks-app {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px;
+  background: #eaf0f7;
+  color: #142137;
+  overflow: auto;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.blocks-toolbar, .blocks-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.blocks-toolbar button, .blocks-toolbar select, .blocks-controls button, .blocks-save-fields button {
+  min-height: 40px;
+  border: 1px solid #94a7bd;
+  border-radius: 6px;
+  background: #f7fafc;
+  color: #142137;
+  cursor: pointer;
+  padding: 4px 10px;
+  font-weight: 500;
+  box-sizing: border-box;
+}
+
+.blocks-toolbar button:hover, .blocks-controls button:hover {
+  background: #e3ebf4;
+}
+
+.blocks-controls button {
+  flex: 1 1 76px;
+  touch-action: none;
+}
+
+.blocks-save-fields {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.blocks-save-fields input {
+  min-width: 140px;
+  flex: 1;
+  min-height: 38px;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+.blocks-save-location summary, .blocks-help summary, .blocks-settings summary {
+  cursor: pointer;
+  min-height: 32px;
+  font-weight: 600;
+}
+
+.blocks-play-area {
+  display: flex;
+  flex: 1 1 360px;
+  min-height: 280px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.blocks-coach {
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  width: 72px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.blocks-coach canvas {
+  width: 100%;
+  height: auto;
+}
+
+.blocks-coach-notice {
+  font-size: 11px;
+}
+
+.blocks-stage {
+  flex: 1 1 100%;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline-offset: 2px;
+}
+
+.blocks-stage canvas.blocks-canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  touch-action: none;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(10, 20, 36, 0.2);
+}
+
+.blocks-stage:focus-visible {
+  outline: 3px solid #426dda;
+}
+
+.blocks-info {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1a2f4c;
+}
+
+.blocks-mode-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.blocks-settings label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 12px 6px 0;
+}
+
+.blocks-help p {
+  margin: 4px 0;
+  max-width: 70ch;
+}
+
+.blocks-app .app-status {
+  font-size: 13px;
+  color: #2e435c;
+}
+
+.blocks-audio-control input[type=range] {
+  width: 140px;
+}
+
+.blocks-audio-notice {
+  color: #8a3f1f;
+  font-size: 12px;
+}
+
+.blocks-settings input[type=checkbox] {
+  width: 20px;
+  height: 20px;
+}
+
+/* Tier 1: Simplified Phone Display (< 768px) */
+@media (max-width: 768px) {
+  .blocks-app {
+    padding: 6px;
+    gap: 5px;
+  }
+  .blocks-toolbar button, .blocks-toolbar select, .blocks-controls button, .blocks-save-fields button {
+    min-height: 48px;
+    flex: 1 1 70px;
+    font-size: 13px;
+  }
+  .blocks-coach {
+    width: 52px;
+    right: 4px;
+    top: 4px;
+  }
+  .blocks-play-area {
+    min-height: 240px;
+  }
+  .blocks-audio-control input[type=range] {
+    width: 100px;
+  }
+}
+
+/* Tier 3: Complete 4K UHD Display (>= 2560px) */
+@media (min-width: 2560px) {
+  .blocks-app {
+    padding: 20px;
+    gap: 12px;
+    font-size: 16px;
+  }
+  .blocks-toolbar button, .blocks-toolbar select, .blocks-controls button, .blocks-save-fields button {
+    min-height: 52px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+  .blocks-play-area {
+    min-height: 580px;
+  }
+  .blocks-info {
+    font-size: 18px;
+  }
+  .blocks-coach {
+    width: 110px;
+  }
+  .blocks-app .app-status {
+    font-size: 16px;
+  }
+}
