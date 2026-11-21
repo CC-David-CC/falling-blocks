@@ -2,6 +2,7 @@ import {Rive,RuntimeLoader} from '@rive-app/canvas';
 RuntimeLoader.setWasmUrl(new URL('./node_modules/@rive-app/canvas/rive.wasm',import.meta.url).href);
 RuntimeLoader.setWasmFallbackUrl(new URL('./node_modules/@rive-app/canvas/rive_fallback.wasm',import.meta.url).href);
 import {createGame,command,tick,cells,ghost,nextPieces,snapshot,restore,HIDDEN,WIDTH} from './model.mjs';
+import {computeLayout} from './layout.mjs';
 import {createGameAudio} from './audio.mjs';
 import './style.css';
 
@@ -40,24 +41,13 @@ export function mount(host){
  const renderPlayfield=()=>{
   if(disposed||!ctx)return;
   const rect=stage.getBoundingClientRect();
-  const w=Math.max(180,rect.width||300);
-  const h=Math.max(260,rect.height||600);
   const dpr=Math.min(window.devicePixelRatio||1,4);
-  const targetW=Math.round(w*dpr);
-  const targetH=Math.round(h*dpr);
-  if(stageCanvas.width!==targetW||stageCanvas.height!==targetH){stageCanvas.width=targetW;stageCanvas.height=targetH;}
+  const layout=computeLayout(rect.width,rect.height,dpr);
+  const {w,h,targetBufferW,targetBufferH,cellSize,boardW,boardH,offsetX,offsetY,visibleRows}=layout;
+  if(stageCanvas.width!==targetBufferW||stageCanvas.height!==targetBufferH){stageCanvas.width=targetBufferW;stageCanvas.height=targetBufferH;}
   stageCanvas.style.width=`${w}px`;stageCanvas.style.height=`${h}px`;
   ctx.setTransform(dpr,0,0,dpr,0,0);
   ctx.clearRect(0,0,w,h);
-
-  const visibleRows=model.board.length-HIDDEN;
-  const cellW=Math.floor((w-16)/WIDTH);
-  const cellH=Math.floor((h-16)/visibleRows);
-  const cellSize=Math.max(8,Math.min(cellW,cellH));
-  const boardW=cellSize*WIDTH;
-  const boardH=cellSize*visibleRows;
-  const offsetX=Math.floor((w-boardW)/2);
-  const offsetY=Math.floor((h-boardH)/2);
 
   ctx.fillStyle='#111c2d';
   ctx.fillRect(offsetX,offsetY,boardW,boardH);

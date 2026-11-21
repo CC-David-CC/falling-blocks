@@ -1,19 +1,7 @@
 import { describe, it } from 'node:test';
 import assert from 'node:assert/strict';
-import { HIDDEN, WIDTH, HEIGHT } from '../model.mjs';
-
-function computeLayout(w, h, dpr = 1) {
-  const visibleRows = HEIGHT - HIDDEN; // 20
-  const cellW = Math.floor((w - 16) / WIDTH);
-  const cellH = Math.floor((h - 16) / visibleRows);
-  const cellSize = Math.max(8, Math.min(cellW, cellH));
-  const boardW = cellSize * WIDTH;
-  const boardH = cellSize * visibleRows;
-  const offsetX = Math.floor((w - boardW) / 2);
-  const offsetY = Math.floor((h - boardH) / 2);
-  const tier = w < 768 ? 'phone' : (w >= 2560 || (w >= 1920 && dpr >= 2)) ? '4k' : 'desktop';
-  return { w, h, dpr, tier, cellSize, boardW, boardH, offsetX, offsetY };
-}
+import { computeLayout } from '../layout.mjs';
+import { createGame, command, tick } from '../model.mjs';
 
 describe('Falling Blocks responsive layout metrics', () => {
   it('computes compact metrics for phone viewports (< 768px)', () => {
@@ -43,5 +31,37 @@ describe('Falling Blocks responsive layout metrics', () => {
     assert.ok(layout.offsetY >= 0);
     assert.ok(layout.boardW <= 3840);
     assert.ok(layout.boardH <= 2160);
+  });
+
+  it('verifies resizing during active gameplay preserves game state and does not corrupt tick/score', () => {
+    const game = createGame({ seed: 12345, mode: 'endless' });
+    command(game, 'resume');
+    // Tick several times to advance active tetromino
+    for (let i = 0; i < 10; i++) {
+      tick(game);
+    }
+    const scoreBefore = game.score;
+    const linesBefore = game.lines;
+    const activeBefore = { ...game.active };
+    const boardBefore = JSON.stringify(game.board);
+
+    // Simulate resizing across multiple tiers mid-game
+    const phoneLayout = computeLayout(375, 667, 3);
+    assert.equal(phoneLayout.tier, 'phone');
+    const deskLayout = computeLayout(1920, 1080, 1);
+    assert.equal(deskLayout.tier, 'desktop');
+    const uhdLayout = computeLayout(3840, 2160, 2);
+    assert.equal(uhdLayout.tier, '4k');
+
+    // More ticks
+    for (let i = 0; i < 5; i++) {
+      tick(game);
+    }
+
+    assert.equal(game.score, scoreBefore);
+    assert.equal(game.lines, linesBefore);
+    assert.equal(game.active.type, activeBefore.type);
+    assert.ok(game.active.y >= activeBefore.y); // Piece continued falling normally
+    assert.equal(JSON.stringify(game.board), boardBefore);
   });
 });
